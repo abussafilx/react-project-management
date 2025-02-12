@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+  text-align: center;
 }
 
 a {
@@ -96,4 +97,3 @@ textarea {
 .TaskCard {
   background-color: #dfeef9;
 }
-
