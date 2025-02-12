@@ -3,6 +3,7 @@ import axios from "axios";
 import Loader from "../components/Loader";
 
 import { API_URL } from "../config/api";
+import { Link } from "react-router-dom";
 
 function ProjectListPage() {
 
@@ -10,28 +11,29 @@ function ProjectListPage() {
 
     useEffect(() => {
         axios.get(`${API_URL}/projects`)
-            .then( response => {
-                setProjects(response.data.toReversed());
+            .then(response => {
+                const projectsArr = response.data.toReversed();
+                setProjects(projectsArr);
             })
             .catch(e => console.log("Error getting projects from the API...", e));
     }, []);
 
 
-    if(projects === null) {
-        return <Loader/>
+    if (projects === null) {
+        return <Loader />
     }
 
 
     return (
         <>
-            <h1>Number of projects... {projects.length}</h1>
-
-            {projects.map((e,i) => {
-                return <div key={e.id} className="card">
-                    <h3>    {e.title}</h3>
-                    
-                </div>
-
+            {projects.map((projectDetails) => {
+                return (
+                    <div className="card" key={projectDetails.id}>
+                        <Link to={`/projects/${projectDetails.id}`}>
+                            <h3>{projectDetails.title}</h3>
+                        </Link>
+                    </div>
+                )
             })}
         </>
     );

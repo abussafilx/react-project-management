@@ -8,7 +8,7 @@ function CreateProjectPage() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,12 +19,11 @@ function CreateProjectPage() {
         }
 
         axios.post(`${API_URL}/projects`, newProject)
-            .then( response => {
+            .then(response => {
                 navigate("/projects");
             })
             .catch(e => console.log("Error creating a new project...", e));
     }
-
 
     return (
         <div className="CreateProjectPage">
