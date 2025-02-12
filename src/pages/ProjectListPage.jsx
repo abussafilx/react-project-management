@@ -11,7 +11,7 @@ function ProjectListPage() {
     useEffect(() => {
         axios.get(`${API_URL}/projects`)
             .then( response => {
-                setProjects(response.data);
+                setProjects(response.data.toReversed());
             })
             .catch(e => console.log("Error getting projects from the API...", e));
     }, []);
