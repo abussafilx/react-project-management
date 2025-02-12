@@ -1,11 +1,20 @@
+import { Routes, Route } from "react-router-dom"
+import Navbar from "./components/navbar"
+import HomePage from "./pages/Homepage"
 
 function App() {
-  c
+  
 
   return (
     <>
-      
-      <h1>Hello World</h1>
+
+      <Navbar></Navbar>
+
+      <Routes>
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/projects" element={<p>Project List Page</p>} />
+      </Routes>
+
       
     </>
   )
